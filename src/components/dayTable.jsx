@@ -13,7 +13,9 @@ function createData(name, cycling, running, pullup, pushup, squat, plank) {
 }
 
 export default function DayTable() {
-  const initialvalue = {
+  const postcontext = useContext(PostContext);
+  const { selectedPost, setSelectedDate } = postcontext;
+  const [data, setData] = useState({
     cycling: { duration: 0, distance: 0 },
     running: { duration: 0, distance: 0 },
     pullup: { reps: 0 },
@@ -21,10 +23,7 @@ export default function DayTable() {
     squat: { reps: 0 },
 
     plank: { duration: 0 },
-  };
-  const postcontext = useContext(PostContext);
-  const { selectedPost, setSelectedDate } = postcontext;
-  const [data, setData] = useState(initialvalue);
+  });
   const [request, setRequest] = useState(false);
 
   useEffect(() => {
@@ -33,7 +32,15 @@ export default function DayTable() {
 
   useEffect(() => {
     if (request) {
-      setData(initialvalue);
+      setData({
+        cycling: { duration: 0, distance: 0 },
+        running: { duration: 0, distance: 0 },
+        pullup: { reps: 0 },
+        pushup: { reps: 0 },
+        squat: { reps: 0 },
+    
+        plank: { duration: 0 },
+      });
       setRequest(false);
     } else {
       selectedPost.map((post) => {
