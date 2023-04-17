@@ -141,10 +141,7 @@ function PostAction(props) {
     dispatch({ type: "SET_SELECTED_POST", payload: post });
   };
 
-  //   //clear selected
-  //   const clearSelected = () => {
-  //     dispatch({ type: "CLEAR_SELECTED" });
-  //   };
+
 
   // set selected
   const setSelectedDate = (date) => {

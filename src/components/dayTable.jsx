@@ -13,9 +13,10 @@ function createData(name, cycling, running, pullup, pushup, squat, plank) {
 }
 
 export default function DayTable() {
+
   const postcontext = useContext(PostContext);
-  const { selectedPost, setSelectedDate } = postcontext;
-  const [data, setData] = useState({
+  const { selectedPost} = postcontext;
+  const [data, setData] = useState( {
     cycling: { duration: 0, distance: 0 },
     running: { duration: 0, distance: 0 },
     pullup: { reps: 0 },
@@ -24,26 +25,22 @@ export default function DayTable() {
 
     plank: { duration: 0 },
   });
-  const [request, setRequest] = useState(false);
-
+  const [localpost,setLocalpost]=useState(selectedPost)
   useEffect(() => {
-    setRequest((prev)=>!prev);
-  }, [setSelectedDate]);
+    setLocalpost(selectedPost)
+    setData( {
+      cycling: { duration: 0, distance: 0 },
+      running: { duration: 0, distance: 0 },
+      pullup: { reps: 0 },
+      pushup: { reps: 0 },
+      squat: { reps: 0 },
+  
+      plank: { duration: 0 },
+    });
+  }, [selectedPost]);
 
-  useEffect(() => {
-    if (request) {
-      setData({
-        cycling: { duration: 0, distance: 0 },
-        running: { duration: 0, distance: 0 },
-        pullup: { reps: 0 },
-        pushup: { reps: 0 },
-        squat: { reps: 0 },
-    
-        plank: { duration: 0 },
-      });
-      setRequest(false);
-    } else {
-      selectedPost.forEach((post) => {
+  useEffect(() => { 
+    localpost.forEach((post) => {
         if (post.name === "cycling") {
           const newdata = { ...data };
           const { cycling } = { ...newdata };
@@ -73,8 +70,8 @@ export default function DayTable() {
         }
         return
       });
-    }
-  }, [request,selectedPost,data]);
+  
+  }, [localpost]);
 
   const rows = [
     createData(

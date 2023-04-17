@@ -24,7 +24,7 @@ useEffect(()=>{
     useEffect(()=>{
       const select= posts.filter((post)=>new Date(post.date).toDateString()===selectedDate)
       setSelectedPost(select);
-    },[selectedDate,posts,setSelectedPost])
+    },[selectedDate,posts])
     
 
     const handleUpdate=(post)=>{
