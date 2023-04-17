@@ -78,7 +78,7 @@ useEffect(()=>{
   }
   setReload(false)
 
-},[updateUser,navigate,reload])
+},[updateUser,reload])
   const requestLink=()=>{
     axios.post("https://fitness-logger.onrender.com/request-password", {email:email})
                .then((response)=>{

@@ -19,12 +19,12 @@ useEffect(()=>{
   const username =  localStorage.getItem('username'); 
   if(posts.length===0)
    getPosts(username,token);
-},[posts.length,getPosts])
+},[])
 
     useEffect(()=>{
       const select= posts.filter((post)=>new Date(post.date).toDateString()===selectedDate)
       setSelectedPost(select);
-    },[selectedDate,posts])
+    },[selectedDate])
     
 
     const handleUpdate=(post)=>{

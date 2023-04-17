@@ -43,7 +43,7 @@ export default function Daily() {
   } = dailycontext;
   useEffect(() => {
     getDaily();
-  }, [getDaily]);
+  }, []);
 
   const [select, setSelect] = useState();
   const [add, setAdd] = useState(false);

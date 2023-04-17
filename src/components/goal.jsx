@@ -27,7 +27,7 @@ export default function Goal() {
         return setCurrentGoal(element);
       }
     });
-  }, [value,setCurrentGoal,goals]);
+  }, [value]);
 
   const handleFormChange = (e) => {
     // console.log(e.target.value);

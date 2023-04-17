@@ -24,7 +24,7 @@ function Home() {
     const username =  localStorage.getItem('username');
     token && username ?<></> :navigate('/login')
     getPosts(username,token)
-  },[getPosts,navigate])
+  },[])
 
 
 

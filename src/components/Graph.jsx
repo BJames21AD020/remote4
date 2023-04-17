@@ -20,7 +20,7 @@ const Graph = () => {
 
   useEffect(()=>{
     getGoals(localStorage.getItem('username'),localStorage.getItem('token'))
-  },[getGoals])
+  },[])
 
   const dataFunction = (type) => {
     const typeArr = posts.filter((post) => post.name === type).sort((a,b)=>new Date(b.date)-new Date(a.date));

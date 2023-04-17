@@ -16,7 +16,7 @@ useEffect(()=>{
  const username =  localStorage.getItem('username');
 
  token && username ?<></> :navigate('/login')
-},[navigate])
+},[])
 
 
 
