@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useContext, useEffect } from "react";
+import React, {Fragment, useContext, useEffect } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -44,7 +44,7 @@ export default function Goal() {
     addGoal(goals);
   };
   const handleUpdate = () => {
-    const newGoals = goals.map((goal) => goal.name == value?  goal = currentGoal:goal
+    const newGoals = goals.map((goal) => goal.name === value?  goal = currentGoal:goal
     );
     // console.log(newGoals);
     updateGoals(newGoals);
@@ -81,7 +81,7 @@ export default function Goal() {
               value={currentGoal.target ? currentGoal.target : ""}
               onChange={handleFormChange}
             />
-            {goals.find((goal) => goal.name == value) ? (
+            {goals.find((goal) => goal.name === value) ? (
               <Fragment>
                 {" "}
                 <Button onClick={handleUpdate} className="ms-auto">

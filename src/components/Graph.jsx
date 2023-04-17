@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Container from "@mui/material/Container";
@@ -140,7 +140,7 @@ const Graph = () => {
                 chartBackground={chartBackground}
                 chartTheme={chartTheme}
                 value= "cycling" 
-                goalTarget={(goals.find((goal)=>goal.name== "cycling" ))&&(goals.find((goal)=>goal.name== "cycling" )).target}
+                goalTarget={(goals.find((goal)=>goal.name=== "cycling" ))&&(goals.find((goal)=>goal.name=== "cycling" )).target}
                 // goalTarget={getGoalByTarget('cycling')}
                 />
               )}
@@ -151,7 +151,7 @@ const Graph = () => {
                 chartBackground={chartBackground}
                 chartTheme={chartTheme}
                 value="running"
-                goalTarget={(goals.find((goal)=>goal.name== "running" ))&&(goals.find((goal)=>goal.name== "running" )).target}
+                goalTarget={(goals.find((goal)=>goal.name=== "running" ))&&(goals.find((goal)=>goal.name=== "running" )).target}
                 
                 />
               )}
@@ -161,7 +161,7 @@ const Graph = () => {
                 chartBackground={chartBackground}
                 chartTheme={chartTheme}
                 value="pushup"
-                goalTarget={(goals.find((goal)=>goal.name=="pushup"))&&(goals.find((goal)=>goal.name== "pushup" )).target}
+                goalTarget={(goals.find((goal)=>goal.name==="pushup"))&&(goals.find((goal)=>goal.name=== "pushup" )).target}
                
                 />
               )}
@@ -171,7 +171,7 @@ const Graph = () => {
                 chartBackground={chartBackground}
                 chartTheme={chartTheme}
                 value="pullup"
-                goalTarget={(goals.find((goal)=>goal.name=="pullup"))&&(goals.find((goal)=>goal.name== "pullup" )).target}
+                goalTarget={(goals.find((goal)=>goal.name==="pullup"))&&(goals.find((goal)=>goal.name=== "pullup" )).target}
                
                 />
               )}
@@ -181,7 +181,7 @@ const Graph = () => {
                 chartBackground={chartBackground}
                 chartTheme={chartTheme}
                 value="squat"
-                goalTarget={(goals.find((goal)=>goal.name=="squat"))&&(goals.find((goal)=>goal.name== "squat" )).target}
+                goalTarget={(goals.find((goal)=>goal.name==="squat"))&&(goals.find((goal)=>goal.name==="squat" )).target}
                
                 />
               )}
@@ -191,7 +191,7 @@ const Graph = () => {
                 chartBackground={chartBackground}
                 chartTheme={chartTheme}
                 value="plank"
-                goalTarget={(goals.find((goal)=>goal.name=="plank"))&&(goals.find((goal)=>goal.name== "plank" )).target}
+                goalTarget={(goals.find((goal)=>goal.name==="plank"))&&(goals.find((goal)=>goal.name=== "plank" )).target}
                
                 />
               )}

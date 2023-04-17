@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -35,10 +35,10 @@ const { updateDaily,setActivity,activity,time,setTime,selectedDaily,addDaily} = 
  } 
 const handleUpdateTime=()=>{
 
-if(select=='add'){
+if(select==='add'){
    activity.length!==0 && addDaily({activity:activity,date:time});
 }
-if(select == 'edit'){
+if(select === 'edit'){
   selectedDaily.activity=activity;
   selectedDaily.date = time
   updateDaily(selectedDaily)

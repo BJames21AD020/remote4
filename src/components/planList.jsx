@@ -9,7 +9,7 @@ import PostContext from '../context/post/postContext';
 function PlanList() {
 
 const postcontext = useContext(PostContext)
-const {selectedDate,posts,getPosts,selectedPost,setSelectedPost,deletePost,updatePost,currentPost,setCurrentPost}=postcontext
+const {selectedDate,posts,getPosts,selectedPost,setSelectedPost,deletePost,setCurrentPost}=postcontext
   
     const [add,setAdd] = useState(false);
     const [update,setUpdate] =useState(false);
@@ -17,13 +17,12 @@ const {selectedDate,posts,getPosts,selectedPost,setSelectedPost,deletePost,updat
 useEffect(()=>{
   const token = localStorage.getItem('token');
   const username =  localStorage.getItem('username'); 
-  if(posts.length==0)
+  if(posts.length===0)
    getPosts(username,token);
 },[])
 
     useEffect(()=>{
       const select= posts.filter((post)=>new Date(post.date).toDateString()==selectedDate)
-      // console.log(select);
       setSelectedPost(select);
     },[selectedDate,posts])
     

@@ -37,10 +37,7 @@ export default function Daily() {
   const {
     getDaily,
     daily,
-    selectedDaily,
     setActivity,
-    setTime,
-    addDaily,
     deleteDaily,
     setSelectedDaily,
   } = dailycontext;
@@ -48,7 +45,6 @@ export default function Daily() {
     getDaily();
   }, []);
 
-  // console.log(daily);
   const [select, setSelect] = useState();
   const [add, setAdd] = useState(false);
 
@@ -96,13 +92,13 @@ export default function Daily() {
       </Card>
       <AddDaily add={add} cancelAdd={cancelAdd} select={select} />
       <List sx={style} component="nav" aria-label="mailbox folders">
-        {daily.length != 0
+        {daily.length !== 0
           ? daily.map((lists, index) => (
               <ListItem button divider key={index}>
                 <ListItemText
                   primary={lists.activity}
                   secondary={
-                    "today" + " " + new Date(lists.date).toLocaleTimeString()
+                    "today" + (" ") + new Date(lists.date).toLocaleTimeString()
                   }
                 />
                 <IconButton
@@ -121,7 +117,7 @@ export default function Daily() {
                 <ListItemText
                   primary={lists.activity}
                   secondary={
-                    "today" + " " + new Date(lists.date).toLocaleTimeString()
+                    "today" +(" ") + new Date(lists.date).toLocaleTimeString()
                   }
                 />
               </ListItem>

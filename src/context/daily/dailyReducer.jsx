@@ -1,4 +1,4 @@
-export default (state, action) => {
+const DailyReducer=(state, action) => {
     switch (action.type) {
       case "ADD_DAILY":
         return {
@@ -12,35 +12,6 @@ export default (state, action) => {
           daily:  [...(action.payload.sort((a,b)=>new Date(a.date)-new Date(b.date)))],
           loading: false,
         };
-    //   case "UPDATE_POST":
-    //     return {
-    //       ...state,
-    //       posts: state.posts.map((post) =>
-    //         post._id === action.payload._id ? action.payload : post
-    //       ),
-    //       loading: false,
-    //     };
-    //   case "DELETE_POST":
-    //     return {
-    //       ...state,
-    //       posts: state.posts.filter((post) => post._id !== action.payload),
-    //       loading: false,
-    //     };
-
-    //   case "POST_ERROR":
-    //     return {
-    //       ...state,
-    //       error: action.payload,
-    //       loading: false,
-    //     };
-
-
-    //   case "SET_SELECTED_POST":
-    //     return {
-    //       ...state,
-    //       selectedPost:action.payload,
-    //     };
-    
 
     case "SET_SELECTEDDAILY":
         return {
@@ -77,3 +48,5 @@ export default (state, action) => {
 
 
   };
+
+  export default DailyReducer;

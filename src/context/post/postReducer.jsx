@@ -1,4 +1,4 @@
-export default (state, action) => {
+const  PostReducer=(state, action) => {
     switch (action.type) {
       case "ADD_POST":
         return {
@@ -64,3 +64,5 @@ export default (state, action) => {
 
 
   };
+
+  export default PostReducer

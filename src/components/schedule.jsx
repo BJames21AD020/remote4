@@ -51,7 +51,7 @@ export default function ScheduleDate() {
     return new Date(d.date).toDateString()})
     // console.log(highlightedDays);
   const requestAbortController = React.useRef(null);
-  const [isLoading, setIsLoading] = React.useState(false);
+  //const [isLoading, setIsLoading] = React.useState(false);
  
   const handleViewChange = (e)=>{
     // console.log(e.$d.toDateString());
@@ -75,7 +75,7 @@ export default function ScheduleDate() {
       
         defaultValue={initialValue}
         onChange={(e)=>handleViewChange(e)}
-        loading={isLoading}
+        // loading={isLoading}
         onMonthChange={handleMonthChange}
         renderLoading={() => <DayCalendarSkeleton />}
         slots={{

@@ -1,4 +1,4 @@
-export default (state, action) => {
+ const GoalReducer= (state, action) => {
     switch (action.type) {
       case "SET_CHART":
         return {
@@ -12,12 +12,6 @@ export default (state, action) => {
             currentGoal: action.payload,
           };
   
-      // case "ADD_GOAL":
-      //   return {
-      //     ...state,
-      //     goals: [...state.goals, action.payload],
-      //     isLoading: false,
-      //   };
   
       case "GET_GOALS":
         return {
@@ -26,20 +20,6 @@ export default (state, action) => {
           isLoading: false,
         };
   
-      // case "UPDATE_GOALS":
-      //   return {
-      //     ...state,
-      //     goals: state.goals.map((goal) =>
-      //       goal._id === action.payload._id ? action.payload : goal
-      //     ),
-      //     isLoading: false,
-      //   };
-      // case "DELETE_GOALS":
-      //   return {
-      //     ...state,
-      //     goals: state.goals.filter((goal) => goal._id !== action.payload),
-      //     isLoading: false,
-      //   };
   
       case "SET_LOADING":
         return {
@@ -57,4 +37,6 @@ export default (state, action) => {
         return state;
     }
   };
+
+  export default GoalReducer
   

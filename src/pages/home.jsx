@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 function Home() {
   const postContext= useContext(PostContext)
-  const {posts,error,getPosts,setloading} = postContext
+  const {getPosts} = postContext
 
 
  
@@ -24,9 +24,7 @@ function Home() {
     const username =  localStorage.getItem('username');
     getPosts(username,token)
   },[])
-  // useEffect(()=>{
-  //   console.log(posts);
-  // },[posts])
+
   const navigate = useNavigate();
   useEffect(()=>{
     const token = localStorage.getItem('token');
