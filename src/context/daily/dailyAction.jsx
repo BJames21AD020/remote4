@@ -48,7 +48,7 @@ const setSelectedDaily = (daily) => {
         },
       };
       const res = await axios.get(
-        `http://localhost:4500/${username}/home`,
+        `https://fitness-logger.onrender.com/${username}/home`,
         config
       );
 // console.log(res);
@@ -75,7 +75,7 @@ const setSelectedDaily = (daily) => {
         },
       };
       const res = await axios.post(
-        `http://localhost:4500/${username}/setdaily`,daily,config);
+        `https://fitness-logger.onrender.com/${username}/setdaily`,daily,config);
 
       dispatch({
         type: "ADD_DAILY",
@@ -103,7 +103,7 @@ const setSelectedDaily = (daily) => {
         },
       };
       const res = await axios.put(
-        `http://localhost:4500/${username}/updatedaily/${selectedDaily._id}`,selectedDaily,config);
+        `https://fitness-logger.onrender.com/${username}/updatedaily/${selectedDaily._id}`,selectedDaily,config);
 // console.log(res);
       dispatch({
         type: "ADD_DAILY",
@@ -128,7 +128,7 @@ const setSelectedDaily = (daily) => {
           },
         };
         const res = await axios.delete(
-          `http://localhost:4500/${username}/deletedaily/${id}`,config);
+          `https://fitness-logger.onrender.com/${username}/deletedaily/${id}`,config);
 
         dispatch({
           type: "ADD_DAILY",

@@ -33,11 +33,10 @@ function PostAction(props) {
     try {
       setLoading();
       const res = await axios.post(
-        `http://localhost:4500/${username}/addpost`,
+        `https://fitness-logger.onrender.com/${username}/addpost`,
         post,
         config
       );
-      console.log(res);
       dispatch({
         type: "ADD_POST",
         payload: res.data,
@@ -61,7 +60,7 @@ function PostAction(props) {
         },
       };
       const res = await axios.get(
-        `http://localhost:4500/${username}/home`,
+        `https://fitness-logger.onrender.com/${username}/home`,
         config
       );
 
@@ -89,7 +88,7 @@ function PostAction(props) {
     try {
       setLoading();
       const res = await axios.put(
-        `http://localhost:4500/${username}/updatepost/${post._id}`,
+        `https://fitness-logger.onrender.com/${username}/updatepost/${post._id}`,
         post,
         config
       );
@@ -121,7 +120,7 @@ function PostAction(props) {
     try {
       setLoading();
       await axios.delete(
-        `http://localhost:4500/${username}/deletepost/${id}`,
+        `https://fitness-logger.onrender.com/${username}/deletepost/${id}`,
         config
       );
 

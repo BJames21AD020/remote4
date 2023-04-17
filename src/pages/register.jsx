@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Alert, Paper, Popper, Snackbar } from "@mui/material";
+import { Alert, Snackbar } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 import axios from "axios";
 import * as yup from "yup";
@@ -41,7 +41,7 @@ export default function Register() {
     onSubmit: (userdata) => {
       console.log(userdata);
       axios
-        .post("http://localhost:4500/register", userdata)
+        .post("https://fitness-logger.onrender.com/register", userdata)
         .then((response) => {
           setType("success")
           setRegister(true);

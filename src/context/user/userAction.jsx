@@ -20,7 +20,7 @@ function UserAction(props){
         const login= async (userdata)=>{
           
             try{
-               const res = await  axios.post("http://localhost:4500/login", userdata)
+               const res = await  axios.post("https://fitness-logger.onrender.com/login", userdata)
               
 
               localStorage.setItem("token", res.data.token);
@@ -51,7 +51,7 @@ function UserAction(props){
                 }
             }
             try{
-               const res = await  axios.get(`http://localhost:4500/${username}/getuser`,config)
+               const res = await  axios.get(`https://fitness-logger.onrender.com/${username}/getuser`,config)
               
                dispatch({
                 type: "GET_USER",
@@ -79,7 +79,7 @@ function UserAction(props){
                 }
             }
             try{
-               const res =await  axios.put(`http://localhost:4500/${username}/update`, userdata,config)
+               const res =await  axios.put(`https://fitness-logger.onrender.com/${username}/update`, userdata,config)
                dispatch({
                 type: "GET_USER",
                 payload: {...res.data},
@@ -91,7 +91,7 @@ function UserAction(props){
             
 
             }catch(error){
-                console.log(error);
+               
                 dispatch({
                     type: "USER_ERROR",
                     payload: error.response,
@@ -100,6 +100,8 @@ function UserAction(props){
             
         }
 
+
+
     return(
         <UserContext.Provider value={{
             user:state.user,
@@ -107,6 +109,7 @@ function UserAction(props){
             login,
             updateUser,
             getUser
+            
 
         }}>
             {props.children}

@@ -38,7 +38,7 @@ const GoalAction = (props) => {
   console.log(goals);
       try {
         setLoading();
-         const res=await axios.post(`http://localhost:4500/${username}/setgoal`,{"goals":goals},config);
+         const res=await axios.post(`https://fitness-logger.onrender.com/${username}/setgoal`,{"goals":goals},config);
                 
          dispatch({
             type: "GET_GOALS",
@@ -63,7 +63,7 @@ const GoalAction = (props) => {
           },
         };
         const res = await axios.get(
-          `http://localhost:4500/${username}/home`,
+          `https://fitness-logger.onrender.com/${username}/home`,
           config
         );
 
@@ -92,7 +92,7 @@ const GoalAction = (props) => {
 
       try {
         setLoading();
-         const res=await axios.post(`http://localhost:4500/${username}/setgoal`,{"goals":goals},config);
+         const res=await axios.post(`https://fitness-logger.onrender.com/${username}/setgoal`,{"goals":goals},config);
         dispatch({
             type: "GET_GOALS",
             payload: [...res.data.goals],
@@ -116,7 +116,7 @@ const GoalAction = (props) => {
           };
 
       try {
-        const res=await axios.post(`http://localhost:4500/${username}/setgoal`,{"goals":goals},config);
+        const res=await axios.post(`https://fitness-logger.onrender.com/${username}/setgoal`,{"goals":goals},config);
       
       
         dispatch({

@@ -80,13 +80,14 @@ useEffect(()=>{
 
 },[updateUser,navigate,reload])
   const requestLink=()=>{
-    axios.post("http://localhost:4500/request-password", {email:email})
+    axios.post("https://fitness-logger.onrender.com/request-password", {email:email})
                .then((response)=>{
                 setType("success")
                 setData(response.data)
                 setRequestPssword(true)
               })
                .catch((error) => {
+                console.log(error);
             if (error.response.data.details) {
               setType("warning")
               setData(error.response.data.details[0].message);
@@ -198,7 +199,7 @@ useEffect(()=>{
  
         </div>
       </div>
-      <Snackbar open={requestPssword} autoHideDuration={2000}  anchorOrigin={{ vertical:"top", horizontal:"right" }}  onClose={handleClose}>
+      <Snackbar open={requestPssword} autoHideDuration={4000}  anchorOrigin={{ vertical:"top", horizontal:"right" }}  onClose={handleClose}>
         <Alert severity={type} sx={{ width: "100%" }} >
           {data}
         </Alert>

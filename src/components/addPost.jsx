@@ -30,7 +30,6 @@ export default function AddPost({ add, handleAdd,selectedDate }) {
   const handleAddUpdate = () => {
     handleAdd(false);
     addPost(currentPost);
-    console.log(currentPost);
     setCurrentPost({name:"cycling"});
 
   };

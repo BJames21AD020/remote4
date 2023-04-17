@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,7 +12,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { Alert, ButtonGroup } from "@mui/material";
+import { Alert, ButtonGroup, Snackbar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 
@@ -25,6 +25,22 @@ export default function ForgetPassword() {
 navigate('/login')
   }
 
+  const [requestPssword, setRequestPssword] = useState(false);
+  const [data,setData] = useState('')
+  const [type,setType] = useState('success')
+
+  
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setRequestPssword(false);
+  };
+
+
+
+
   const forgetPasswordFormData = useFormik({
     initialValues: {
       email: "",
@@ -34,15 +50,24 @@ navigate('/login')
     }),
     onSubmit: (userdata) => {
       axios
-        .post("/request-password", userdata)
-        .then((response) => {
-          alert(response.data)        
-          return;
+        .post("https://fitness-logger.onrender.com/request-password", userdata)
+        .then((response)=>{
+          setType("success");
+          setData(response.data);
+          setRequestPssword(true);
+          return
         })
         .catch((error) => {
-              if (error.response.data.details) alert(error.response.data.details[0].message);
-          else if (error.response) alert(error.response.data);
-        });
+          if (error.response.data.details) {
+            setType("warning")
+            setData(error.response.data.details[0].message);
+            setRequestPssword(true)}
+      else if (error.response){ 
+        setType("warning");
+        setData(error.response.data);
+        setRequestPssword(true)
+      }
+    });
         return
     },
   });
@@ -58,7 +83,7 @@ navigate('/login')
             sm={4}
             md={7}
             sx={{
-              backgroundImage: "url(https://source.unsplash.com/random)",
+              backgroundImage: "url(https://picsum.photos/1200/800)",
               backgroundRepeat: "no-repeat",
               backgroundColor: (t) =>
                 t.palette.mode === "light"
@@ -147,6 +172,11 @@ navigate('/login')
       ) : (
         <></>
       )}
+         <Snackbar open={requestPssword} autoHideDuration={4000}  anchorOrigin={{ vertical:"top", horizontal:"right" }}  onClose={handleClose}>
+        <Alert severity={type} sx={{ width: "100%" }} >
+          {data}
+        </Alert>
+      </Snackbar>
     </>
   );
 }
