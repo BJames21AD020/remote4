@@ -54,7 +54,7 @@ export default function Login() {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("username");
     token && username ? navigate(`/${username}`) : <></>;
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -78,7 +78,7 @@ export default function Login() {
   }
 
   
-  }, [login, user]);
+  }, [login, user,error.data,navigate]);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);

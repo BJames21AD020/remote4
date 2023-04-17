@@ -98,7 +98,7 @@ export default function Daily() {
                 <ListItemText
                   primary={lists.activity}
                   secondary={
-                    "today" + (" ") + new Date(lists.date).toLocaleTimeString()
+                    "today " + new Date(lists.date).toLocaleTimeString()
                   }
                 />
                 <IconButton
@@ -117,7 +117,7 @@ export default function Daily() {
                 <ListItemText
                   primary={lists.activity}
                   secondary={
-                    "today" +(" ") + new Date(lists.date).toLocaleTimeString()
+                    "today " + new Date(lists.date).toLocaleTimeString()
                   }
                 />
               </ListItem>

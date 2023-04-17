@@ -28,13 +28,13 @@ export default function DayTable() {
   const [request, setRequest] = useState(false);
 
   useEffect(() => {
-    setRequest(!request);
+    setRequest((prev)=>!prev);
   }, [setSelectedDate]);
 
   useEffect(() => {
     if (request) {
       setData(initialvalue);
-      setRequest(!request);
+      setRequest(false);
     } else {
       selectedPost.map((post) => {
         if (post.name === "cycling") {
@@ -64,9 +64,10 @@ export default function DayTable() {
           newdata.squat.duration += post.duration;
           setData(newdata);
         }
+        return
       });
     }
-  }, [request]);
+  }, [request,selectedPost]);
 
   const rows = [
     createData(

@@ -17,20 +17,16 @@ function Home() {
   const postContext= useContext(PostContext)
   const {getPosts} = postContext
 
-
+ const navigate = useNavigate();
  
   useEffect(()=>{
     const token = localStorage.getItem('token');
     const username =  localStorage.getItem('username');
-    getPosts(username,token)
-  },[])
-
-  const navigate = useNavigate();
-  useEffect(()=>{
-    const token = localStorage.getItem('token');
-    const username =  localStorage.getItem('username');
     token && username ?<></> :navigate('/login')
-   },[])
+    getPosts(username,token)
+  },[getPosts,navigate])
+
+
 
   return (
     <>
