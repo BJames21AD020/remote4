@@ -67,7 +67,7 @@ export default function DayTable() {
         return
       });
     }
-  }, [request,selectedPost]);
+  }, [request,selectedPost,initialvalue,data]);
 
   const rows = [
     createData(

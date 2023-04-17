@@ -23,11 +23,11 @@ export default function Goal() {
   useEffect(() => {
     setCurrentGoal({ name: value, target: null });
     goals.forEach((element) => {
-      if (element.name == value) {
+      if (element.name === value) {
         return setCurrentGoal(element);
       }
     });
-  }, [value]);
+  }, [value,setCurrentGoal,goals]);
 
   const handleFormChange = (e) => {
     // console.log(e.target.value);

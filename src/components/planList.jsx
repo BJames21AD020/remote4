@@ -22,9 +22,9 @@ useEffect(()=>{
 },[posts.length,getPosts])
 
     useEffect(()=>{
-      const select= posts.filter((post)=>new Date(post.date).toDateString()==selectedDate)
+      const select= posts.filter((post)=>new Date(post.date).toDateString()===selectedDate)
       setSelectedPost(select);
-    },[selectedDate,posts])
+    },[selectedDate,posts,setSelectedPost])
     
 
     const handleUpdate=(post)=>{
