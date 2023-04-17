@@ -23,7 +23,7 @@ export default function Goal() {
   useEffect(() => {
     setCurrentGoal({ name: value, target: null });
     goals.forEach((element) => {
-      if (element.name == value) {
+      if (element.name === value) {
         return setCurrentGoal(element);
       }
     });
