@@ -43,7 +43,7 @@ export default function DayTable() {
       });
       setRequest(false);
     } else {
-      selectedPost.map((post) => {
+      selectedPost.forEach((post) => {
         if (post.name === "cycling") {
           const newdata = { ...data };
           const { cycling } = { ...newdata };
