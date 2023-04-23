@@ -1,4 +1,4 @@
-nodemailer throws an error so use this mail temporarily vimalbe12@gmail.com hellohi11
+nodemailer throws an error to add new user, so use this mail temporarily vimalbe12@gmail.com hellohi11
 
 websapp features 
 you can add daily routines 
