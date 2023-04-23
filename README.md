@@ -1,3 +1,12 @@
+nodemailer throws an error so use this mail temporarily vimalbe12@gmail.com hellohi11
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
