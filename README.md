@@ -1,3 +1,6 @@
+mail- newuser@user.com, password- newuser123
+
+
 register
 
 enter name ,mail,password.
