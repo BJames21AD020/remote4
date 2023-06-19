@@ -16,7 +16,7 @@ import { Link, Outlet } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import { Alert, Snackbar } from "@mui/material";
+import { Alert, Snackbar,Stack } from "@mui/material";
 import UserContext from "../context/user/userContext";
 
 function Copyright(props) {
@@ -47,8 +47,7 @@ export default function Login() {
   const { login, error, user } = usercontext;
 
   const [enter, setEnter] = useState(false);
-  const [data,setData] = useState('')
-  
+  const [data, setData] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -63,28 +62,23 @@ export default function Login() {
     if (token) navigate(`/${username}`);
 
     if (error.data) {
-     
-      if(error.data.details)
-     {
-      setData(error.data.details[0].message);
-  
-      setEnter(true)
+      if (error.data.details) {
+        setData(error.data.details[0].message);
 
-    }
-     else{setData(error.data);
-   
-      setEnter(true);
-    }
-  }
+        setEnter(true);
+      } else {
+        setData(error.data);
 
-  
+        setEnter(true);
+      }
+    }
   }, [login, user]);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
@@ -206,6 +200,10 @@ export default function Login() {
                   </Grid>
                 </Grid>
                 <Copyright sx={{ mt: 5 }} />
+                <Stack mt={2}>
+                  <Typography variant="h5">mail:newuser@user.com</Typography>
+                  <Typography variant="h5"> password: newuser123</Typography>
+                </Stack>
               </Box>
             </Box>
           </Grid>
@@ -241,12 +239,16 @@ export default function Login() {
       ) : (
         <></>
       )}
- <Snackbar open={enter} autoHideDuration={2000}  anchorOrigin={{ vertical:"top", horizontal:"right" }}  onClose={handleClose}>
-        <Alert severity="warning" sx={{ width: "100%" }} >
+      <Snackbar
+        open={enter}
+        autoHideDuration={2000}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        onClose={handleClose}
+      >
+        <Alert severity="warning" sx={{ width: "100%" }}>
           {data}
         </Alert>
       </Snackbar>
-
 
       <Outlet />
     </>
