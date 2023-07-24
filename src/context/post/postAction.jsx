@@ -10,7 +10,7 @@ function PostAction(props) {
     currentPost: { name: "cycling" },
     selectedPost: [],
     selectedDate: new Date().toDateString(),
-    loading: false,
+    postLoading: false,
   };
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
@@ -23,6 +23,7 @@ function PostAction(props) {
 
   // add post
   const addPost = async (post) => {
+    setLoading();
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +32,6 @@ function PostAction(props) {
     };
 
     try {
-      setLoading();
       const res = await axios.post(
         `https://fitness-logger.onrender.com/${username}/addpost`,
         post,
@@ -51,9 +51,9 @@ function PostAction(props) {
   };
 
   //get posts
-  const getPosts = async (username,token) => {
+  const getPosts = async (username, token) => {
+    setLoading();
     try {
-      setLoading();
       const config = {
         headers: {
           token: token,
@@ -78,15 +78,15 @@ function PostAction(props) {
 
   //update post
   const updatePost = async (post) => {
+    setLoading();
     const config = {
       headers: {
         "Content-Type": "application/json",
-        "token":token
+        token: token,
       },
     };
 
     try {
-      setLoading();
       const res = await axios.put(
         `https://fitness-logger.onrender.com/${username}/updatepost/${post._id}`,
         post,
@@ -111,6 +111,7 @@ function PostAction(props) {
 
   // delete post
   const deletePost = async (id) => {
+    setLoading();
     const config = {
       headers: {
         token: token,
@@ -118,7 +119,6 @@ function PostAction(props) {
     };
 
     try {
-      setLoading();
       await axios.delete(
         `https://fitness-logger.onrender.com/${username}/deletepost/${id}`,
         config
@@ -141,8 +141,6 @@ function PostAction(props) {
     dispatch({ type: "SET_SELECTED_POST", payload: post });
   };
 
-
-
   // set selected
   const setSelectedDate = (date) => {
     dispatch({ type: "SET_SELECTED_DATE", payload: date });
@@ -155,7 +153,7 @@ function PostAction(props) {
         error: postState.error,
         currentPost: postState.currentPost,
         selectedPost: postState.selectedPost,
-        loading: postState.loading,
+        postLoading: postState.postLoading,
         selectedDate: postState.selectedDate,
         setLoading,
         getPosts,

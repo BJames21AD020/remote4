@@ -13,11 +13,11 @@ const GoalAction = (props) => {
       currentGoal:{name:"cycling",target:null},
       goals: [],
       error: [],
-      isLoading: false,
+      goalLoading: false,
     };
   
     const [state, dispatch] = useReducer(GoalReducer, initialState);
-    // set isLoading
+    // set goalLoading
     const setLoading = () => {
       dispatch({ type: "SET_LOADING" });
     };
@@ -138,7 +138,7 @@ const GoalAction = (props) => {
           goals: state.goals,
           value: state.value,
           error: state.error,
-          isLoading: state.isLoading,
+          goalLoading: state.goalLoading,
           currentGoal:state.currentGoal,
           addGoal,
           getGoals,

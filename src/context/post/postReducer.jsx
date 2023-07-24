@@ -4,13 +4,13 @@ const  PostReducer=(state, action) => {
         return {
           ...state,
           posts: [action.payload, ...state.posts],
-          loading: false,
+          postLoading: false,
         };
       case "GET_POSTS":
         return {
           ...state,
           posts: action.payload,
-          loading: false,
+          postLoading: false,
         };
       case "UPDATE_POST":
         return {
@@ -18,20 +18,20 @@ const  PostReducer=(state, action) => {
           posts: state.posts.map((post) =>
             post._id === action.payload._id ? action.payload : post
           ),
-          loading: false,
+          postLoading: false,
         };
       case "DELETE_POST":
         return {
           ...state,
           posts: state.posts.filter((post) => post._id !== action.payload),
-          loading: false,
+          postLoading: false,
         };
 
       case "POST_ERROR":
         return {
           ...state,
           error: action.payload,
-          loading: false,
+          postLoading: false,
         };
       case "SET_CURRENT":
         return {
@@ -56,7 +56,7 @@ const  PostReducer=(state, action) => {
       case "SET_LOADING":
         return {
           ...state,
-          loading: true,
+          postLoading: true,
         };
       default:
         return state;

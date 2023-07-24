@@ -16,8 +16,9 @@ import { Link, Outlet } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
-import { Alert, Snackbar,Stack } from "@mui/material";
+import { Alert, Snackbar, Stack } from "@mui/material";
 import UserContext from "../context/user/userContext";
+import ThreeDotLoading from "../components/Loading";
 
 function Copyright(props) {
   return (
@@ -44,7 +45,7 @@ export default function Login() {
   const [checked, setChecked] = useState(true);
 
   const usercontext = useContext(UserContext);
-  const { login, error, user } = usercontext;
+  const { login, error, user, loading } = usercontext;
 
   const [enter, setEnter] = useState(false);
   const [data, setData] = useState("");
@@ -61,8 +62,8 @@ export default function Login() {
 
     if (token) navigate(`/${username}`);
 
-    if (error.data) {
-      if (error.data.details) {
+    if (error?.data) {
+      if (error.data?.details) {
         setData(error.data.details[0].message);
 
         setEnter(true);
@@ -104,6 +105,9 @@ export default function Login() {
 
   return (
     <>
+      <Box display={loading ? "block" : "none"}>
+        <ThreeDotLoading />
+      </Box>
       <ThemeProvider theme={theme}>
         <Grid container component="main" sx={{ height: "100vh" }}>
           <CssBaseline />

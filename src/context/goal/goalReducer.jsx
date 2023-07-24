@@ -17,20 +17,20 @@
         return {
           ...state,
           goals: action.payload,
-          isLoading: false,
+          goalLoading: false,
         };
   
   
       case "SET_LOADING":
         return {
           ...state,
-          isLoading: true,
+          goalLoading: true,
         };
       case "GOAL_ERROR":
         return {
           ...state,
           error: action.payload,
-          isLoading: false,
+          goalLoading: false,
         };
   
       default:

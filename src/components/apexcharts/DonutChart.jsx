@@ -1,25 +1,25 @@
-import React, { useContext } from 'react';
-import Box from '@mui/material/Box';
-import Chart from 'react-apexcharts';
-import PostContext from '../../context/post/postContext';
-
+import React, { useContext } from "react";
+import Box from "@mui/material/Box";
+import Chart from "react-apexcharts";
+import PostContext from "../../context/post/postContext";
 
 const DonutChart = () => {
 
-  const postcontext = useContext(PostContext)
-  const {selectedPost}=postcontext
-   
-const donutObj = selectedPost.reduce((obj, v) => {
+  const postcontext = useContext(PostContext);
+  const { selectedPost } = postcontext;
+
+  const donutObj = selectedPost.reduce((obj, v) => {
     obj[v.name] = (obj[v.name] || 0) + 1;
     return obj;
   }, {});
+
   const exerciseArray = [
-    'cycling',
-    'running',
-    'pushup',
-    'pullup',
-    'squat',
-    'plank',
+    "cycling",
+    "running",
+    "pushup",
+    "pullup",
+    "squat",
+    "plank",
   ];
   let donutArray = [];
   const makeArray = (exer) => {
@@ -39,18 +39,14 @@ const donutObj = selectedPost.reduce((obj, v) => {
     return a + b;
   }, 0);
 
-
-
-
-const chartTheme = 'dark';
-const chartBackground =  '#ffffff';
-
+  const chartTheme = "dark";
+  const chartBackground = "#ffffff";
 
   const options = {
     chartTheme: {
       animations: {
         enabled: true,
-        easing: 'easeinout',
+        easing: "easeinout",
         speed: 1000,
         dynamicAnimation: {
           enabled: true,
@@ -59,15 +55,15 @@ const chartBackground =  '#ffffff';
       },
       background: chartBackground,
     },
-    labels: ['Cycling', 'Running', 'Push Up', 'Pull Up', 'Squat', 'Plank'],
+    labels: ["Cycling", "Running", "Push Up", "Pull Up", "Squat", "Plank"],
 
     stroke: {
       width: 0,
     },
     title: {
-      text: 'Favourite Exercise',
+      text: "Favourite Exercise",
       margin: 20,
-      style: { fontWeight: '100', fontSize: '17px' },
+      style: { fontWeight: "100", fontSize: "17px" },
     },
     dataLabels: {
       enabled: false,
@@ -76,25 +72,25 @@ const chartBackground =  '#ffffff';
       mode: chartTheme,
       monochrome: {
         enabled: true,
-        color: '#FF4500',
-        shadeTo: 'light',
+        color: "#FF4500",
+        shadeTo: "light",
         shadeIntensity: 1,
       },
     },
     noData: {
-      text: 'Start Your Progress, Add your first exercise',
-      align: 'center',
-      verticalAlign: 'middle',
+      text: "Start Your Progress, Add your first exercise",
+      align: "center",
+      verticalAlign: "middle",
       offsetX: 0,
       offsetY: 0,
     },
     tooltip: {
       style: {
-        fontSize: '20px',
+        fontSize: "20px",
       },
       y: {
         formatter: function (val) {
-          return Number((val * 100) / donutArrayTotal).toFixed(2) + ' %';
+          return Number((val * 100) / donutArrayTotal).toFixed(2) + " %";
         },
       },
     },
@@ -103,18 +99,19 @@ const chartBackground =  '#ffffff';
   const series = donutArray;
 
   return (
-    <Box sx={{
-        width: '100%',
-        height: '100%',
-        overflow: 'hidden',
-        
-      }}>
+    <Box
+      sx={{
+        width: "100%",
+        height: "100%",
+        overflow: "hidden",
+      }}
+    >
       <Chart
         options={options}
         series={series}
-        type='donut'
-        width='100%'
-        height='268px'
+        type="donut"
+        width="100%"
+        height="268px"
       />
     </Box>
   );
