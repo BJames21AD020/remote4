@@ -24,7 +24,7 @@ const Planner = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-11  col-sm-10 col-md-8 col-lg-5 position-relative pb-5  mx-auto ">
+        <div className="col-11  col-sm-10 col-md-8 col-lg-5 col-xl-4 position-relative pb-5  mx-auto ">
           <Paper elevation={3}>
             <ScheduleDate />
           </Paper>
@@ -36,16 +36,14 @@ const Planner = () => {
         </div>
       </div>
 
-      <div className="row gy-5 ms-5 ms-md-0 mt-md-auto mt-4">
-        <div className="col-12  col-md-9 col-lg-5 mx-auto">
+      <div className="row gy-5 ms-auto  mt-md-auto mt-4">
+        <div className="col-12  col-md-9 col-lg-5 col-xl-4 mx-auto">
           <Paper elevation={4}>
             <DonutChart />
           </Paper>
         </div>
-        <div className="col-12  col-md-12 col-md-9 col-lg-7  mx-auto">
-          {/* <PlanList /> */}
+        <div className="col-12  col-md-12 col-lg-7 col-xl mx-auto">
           <Paper>
-            {/* <Skeleton height={"250px"} width={"100%"} /> */}
             <DayTable />
           </Paper>
         </div>

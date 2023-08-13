@@ -14,7 +14,7 @@ const ChartSingle = ({
     chart: {
       toolbar: {
         offsetX: -8,
-        offsetY: 8,
+        offsetY: 5,
         tools: {
           download: true,
         },
@@ -59,7 +59,7 @@ const ChartSingle = ({
     },
 
     title: {
-      text: 'Your Exercise Progression',
+      text: '',
       offsetX: 20,
       offsetY: 10,
       style: {

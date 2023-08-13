@@ -1,13 +1,26 @@
 #sidemeanu {
   position: sticky;
   top: 0;
-  left: 10px;
   float: left;
+  left: 10px ;
   height: 600px;
   width: 50px;
   z-index: 1500;
+  transition-duration: 600ms;
+}
+.sidemenu_hide{
+  position: fixed !important;
+  top: 55px !important;
+  left: -200px !important;
+  height: 500px !important;
 }
 
+.sidemenu_show{
+  position: fixed !important;
+  top: 55px !important;
+  left: 10px !important;
+  height: 500px !important;
+}
 #sidemeanu .meanubar {
   background: rgba(220, 220, 220, 0.6);
 }

@@ -8,7 +8,7 @@ import NavBar from "../components/navbar";
 function Notification() {
   return (
     <>
-      <div className="container py-4">
+      <div className="container py-3">
         <div className="row text-white fs-4 mb-3">
           <div className="col">
             

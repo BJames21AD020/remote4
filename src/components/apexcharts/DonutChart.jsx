@@ -78,9 +78,10 @@ const DonutChart = () => {
       },
     },
     noData: {
-      text: "Start Your Progress, Add your first exercise",
-      align: "center",
+      text: "Add your first exercise",
+      align: "left",
       verticalAlign: "middle",
+      
       offsetX: 0,
       offsetY: 0,
     },
