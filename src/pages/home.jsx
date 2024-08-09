@@ -12,7 +12,7 @@ import ThreeDotLoading from "../components/Loading";
 
 function Home() {
   const postContext = useContext(PostContext);
-  const {getPosts,postLoading} = postContext
+  const { getPosts, postLoading } = postContext;
 
   const navigate = useNavigate();
 
@@ -25,34 +25,41 @@ function Home() {
 
   return (
     <>
-      <div className="container py-3 mx-auto" id="home">
-        <div className="row text-white fs-4">
-          <div className="col">
+      <div className="container-fluid  py-md-3" id="home">
+        <div className="row  text-white fs-4">
+          <div className="col-12 px-0 mx-0 px-md-3 px-lg-4 ">
             <NavBar panel={"HOME"} />
           </div>
         </div>
-        <div className="row mb-4" id="graph">
-          <div className="col position-relative">
+        <div className="row mb-4 mt-4 mt-sm-5" id="graph">
+          <div className="col-12 px-0 mx-0 px-md-3 px-lg-4 position-relative">
             <Graph />
             <div className="position-absolute bottom-0 end-0 translate-middle-x me-auto me-md-1 pe-md-1 me-xxl-5 pe-xxl-2">
               <SpeedDialMenu />
             </div>
           </div>
         </div>
-
-        <div className="row ms-auto gy-4 ">
-          <div className="col-8 col-sm-8 mx-auto col-md-4 col-lg-3">
+        <div className="row gy-4">
+          <div
+            className="col-12 col-sm-6 col-md-3 mx-auto px-0 pe-sm-1 px-md-1 px-lg-2 px-xl-1  col-lg-3 order-2 order-md-1"
+            id="bmi"
+          >
             <BmiCalculator />
           </div>
-          <div className="col-8 col-sm-8 col-md-4 mx-auto ">
+          <div
+            className="col-12  col-md-4 mx-auto px-0 px-md-1  px-lg-2 px-xl-1 order-1 order-md-2"
+            id="daily_event"
+          >
             <Paper>
               <Daily />
             </Paper>
           </div>
-          <div className="col-8 col-sm-8 col-md-4 mx-auto">
+          <div
+            className="col-12 col-sm-6  col-md-4 mx-auto px-0 ps-sm-1 px-md-1 px-xl-1 px-lg-2 order-2 order-md-3"
+            id="hit_gym"
+          >
             <Paper>
-              {/* <Skeleton height="40vh" width="100%" /> */}
-              <img src={Gym} className="py-4" alt="" />
+              <img src={Gym} alt="" className="py-sm-5 py-lg-0" />
               <Typography variant="h5"> Hit the Gym! </Typography>
             </Paper>
           </div>

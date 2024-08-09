@@ -39,7 +39,7 @@ function PlanList() {
       (post) => new Date(post.date).toDateString() === selectedDate
     );
     setSelectedPost(select);
-  }, [selectedDate,posts]);
+  }, [selectedDate, posts]);
 
   const handleUpdate = (post) => {
     setUpdate(true);
@@ -59,52 +59,50 @@ function PlanList() {
 
   return (
     <>
-      <div>
-        <Card sx={{ display: "flex", justifyContent: "space-between" }}>
-          <CardContent>
-            <Typography>Your selected day / {selectedDate}</Typography>
-          </CardContent>
-          <CardActions>
-            <IconButton
-              onClick={() => handleAdd(true)}
-              aria-label="add"
-              sx={{
-                "&:hover": {
-                  color: "#64dd17",
-                  backgroundColor: "yellow",
-                },
-              }}
-            >
-              <AddIcon />
-            </IconButton>
-          </CardActions>
-        </Card>
+      <Card sx={{ display: "flex", justifyContent: "space-between" }}>
+        <CardContent>
+          <Typography>Your selected day / {selectedDate}</Typography>
+        </CardContent>
+        <CardActions>
+          <IconButton
+            onClick={() => handleAdd(true)}
+            aria-label="add"
+            sx={{
+              "&:hover": {
+                color: "#64dd17",
+                backgroundColor: "yellow",
+              },
+            }}
+          >
+            <AddIcon />
+          </IconButton>
+        </CardActions>
+      </Card>
 
-        {selectedPost.length !== 0 ? (
-          <Box component={"div"} sx={{ maxHeight: "350px", overflow: "auto" }}>
-            {selectedPost.map((post) => (
-              <ExerciseListItem
-                post={post}
-                handleUpdate={handleUpdate}
-                handleDeletePost={handleDeletePost}
-                key={post._id}
-              />
-            ))}
-          </Box>
-        ) : (
-          <Fragment>
-            <Card>
-              <CardContent>
-                <Typography>
-                  Is this your rest day? If not then push...
-                </Typography>
-              </CardContent>
-            </Card>
-          </Fragment>
-        )}
-        <AddPost add={add} handleAdd={handleAdd} selectedDate={selectedDate} />
-        <UpdatePost update={update} cancelUpdate={cancelUpdate} />
-      </div>
+      {selectedPost.length !== 0 ? (
+        <Box component={"div"} sx={{ maxHeight: "350px", overflow: "auto" }}>
+          {selectedPost.map((post) => (
+            <ExerciseListItem
+              post={post}
+              handleUpdate={handleUpdate}
+              handleDeletePost={handleDeletePost}
+              key={post._id}
+            />
+          ))}
+        </Box>
+      ) : (
+        <Fragment>
+          <Card>
+            <CardContent>
+              <Typography>
+                Is this your rest day? If not then push...
+              </Typography>
+            </CardContent>
+          </Card>
+        </Fragment>
+      )}
+      <AddPost add={add} handleAdd={handleAdd} selectedDate={selectedDate} />
+      <UpdatePost update={update} cancelUpdate={cancelUpdate} />
     </>
   );
 }
