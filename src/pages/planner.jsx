@@ -17,7 +17,7 @@ const Planner = () => {
   }, []);
 
   return (
-    <div className="container-fluid py-md-3">
+    <div className="container-fluid py-md-3" id="planner">
       <div className="row text-white fs-4">
         <div className="col-12 px-0 mx-0 px-md-3 px-lg-4 ">
           <NavBar panel={"SCHEDULE"} />

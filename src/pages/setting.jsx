@@ -18,7 +18,7 @@ import SendIcon from "@mui/icons-material/Send";
 import Profile from "../data/profile.webp";
 import UserContext from "../context/user/userContext";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"
+import axios from "axios";
 
 function Setting() {
   const usercontext = useContext(UserContext);
@@ -29,12 +29,11 @@ function Setting() {
   const username = localStorage.getItem("username");
 
   const [requestPssword, setRequestPssword] = useState(false);
-  const [data,setData] = useState('')
-  const [type,setType] = useState('success')
+  const [data, setData] = useState("");
+  const [type, setType] = useState("success");
 
-  
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
@@ -43,13 +42,13 @@ function Setting() {
 
   useEffect(() => {
     token && username ? <></> : navigate("/login");
-  }, [token,username,navigate]);
+  }, [token, username, navigate]);
 
   const [firstname, setFirstname] = useState("");
   const [lastname, setLasttname] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [reload,setReload]=useState(false)
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     if (!user._id) {
@@ -59,7 +58,7 @@ function Setting() {
     setLasttname(user.lastname);
     setPassword(user.password);
     setEmail(user.email);
-  }, [getUser,user]);
+  }, [getUser, user]);
 
   const handleUpdate = () => {
     const userdata = {
@@ -67,49 +66,49 @@ function Setting() {
       lastname: lastname,
     };
     updateUser(userdata, username, token);
-    setReload(true)
-    
+    setReload(true);
   };
-useEffect(()=>{
- 
-  if(reload){
-    const username = localStorage.getItem("username");
-    navigate(`/${username}/settings`);
-  }
-  setReload(false)
-
-},[updateUser,reload])
-  const requestLink=()=>{
-    axios.post("https://fitness-logger.onrender.com/request-password", {email:email})
-               .then((response)=>{
-                setType("success")
-                setData(response.data)
-                setRequestPssword(true)
-              })
-               .catch((error) => {
-                console.log(error);
-            if (error.response.data.details) {
-              setType("warning")
-              setData(error.response.data.details[0].message);
-              setRequestPssword(true)}
-        else if (error.response){ 
+  useEffect(() => {
+    if (reload) {
+      const username = localStorage.getItem("username");
+      navigate(`/${username}/settings`);
+    }
+    setReload(false);
+  }, [updateUser, reload]);
+  const requestLink = () => {
+    axios
+      .post("https://fitness-logger.onrender.com/request-password", {
+        email: email,
+      })
+      .then((response) => {
+        setType("success");
+        setData(response.data);
+        setRequestPssword(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response.data.details) {
+          setType("warning");
+          setData(error.response.data.details[0].message);
+          setRequestPssword(true);
+        } else if (error.response) {
           setType("warning");
           setData(error.response.data);
-          setRequestPssword(true)
+          setRequestPssword(true);
         }
       });
-  }
+  };
 
   return (
     <>
-      <div className="container py-3">
-        <div className="row text-white fs-4 mb-3">
-          <div className="col">
+      <div className="container-fluid  py-md-3">
+        <div className="row  text-white fs-4">
+          <div className="col-12 px-0 mx-0 px-md-3 px-lg-4 ">
             <NavBar panel={"SETTING"} />
           </div>
         </div>
 
-        <div className="row">
+        <div className="row mt-3 mt-sm-4">
           <div className="col">
             <Card sx={{ display: "flex" }}>
               <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -156,7 +155,7 @@ useEffect(()=>{
                         value={email}
                       />
                     </Grid>
-                    <Grid item xs={12} display="flex" >
+                    <Grid item xs={12} display="flex">
                       <Stack direction="row" spacing={2} my={1}>
                         <TextField
                           required
@@ -170,18 +169,20 @@ useEffect(()=>{
                             readOnly: true,
                           }}
                         />
-                        <Button variant="contained" endIcon={<SendIcon />} onClick={requestLink}>
+                        <Button
+                          variant="contained"
+                          endIcon={<SendIcon />}
+                          onClick={requestLink}
+                        >
                           link
                         </Button>
                       </Stack>
                     </Grid>
                     <Button
-                  
                       variant="contained"
                       color="success"
                       onClick={handleUpdate}
-                      sx={{mx:2}}
-                    
+                      sx={{ mx: 2 }}
                     >
                       save changes
                     </Button>
@@ -189,6 +190,7 @@ useEffect(()=>{
                 </Box>
               </Box>
               <CardMedia
+              className="d-none d-md-block"
                 component="img"
                 sx={{ height: "70vh" }}
                 image={Profile}
@@ -196,11 +198,15 @@ useEffect(()=>{
               />
             </Card>
           </div>
- 
         </div>
       </div>
-      <Snackbar open={requestPssword} autoHideDuration={4000}  anchorOrigin={{ vertical:"top", horizontal:"right" }}  onClose={handleClose}>
-        <Alert severity={type} sx={{ width: "100%" }} >
+      <Snackbar
+        open={requestPssword}
+        autoHideDuration={4000}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        onClose={handleClose}
+      >
+        <Alert severity={type} sx={{ width: "100%" }}>
           {data}
         </Alert>
       </Snackbar>
